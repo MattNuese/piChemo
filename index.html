@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>piChemo</title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Treatment', 'Optimization'],
+          ['10',  1000,      400],
+          ['20',  1170,      460],
+          ['30',  660,       1120],
+          ['40',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Neutrophile Count',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h1>piChemo</h1>
+		<img src="https://brand.gatech.edu/sites/default/files/images/brand-graphics/gt-logo-gold.png">
+		<img src="https://www.logolynx.com/images/logolynx/e7/e775a9eb5c18c2a798ea4529ba02c44d.png">
+	</div>
+	<br><br>
+
+	Patient:
+	<input type="file" ID="fileSelect" />
+
+	Model:
+	<select>
+		<option value="PK/PD">PK/PD</option>
+		<option value = PBMs>PBMs</option>
+	</select>
+
+	<div id="curve_chart" style="width: 900px; height: 500px"></div>
+	
+	
+
+</body>
+</html>
